@@ -554,7 +554,7 @@
                         "owl:cardinality": "many"
                     },
                     "executionUrl": {
-                        "description": "A link to the page for executing the ComputationalTool.",
+                        "description": "A link to known page(s) for executing the ComputationalTool.",
                         "oneOf": [
                             {
                                 "type": "string",
@@ -606,7 +606,8 @@
                     "provider",
                     "softwareAddOn",
                     "softwareHelp",
-                    "thumbnailUrl"
+                    "thumbnailUrl",
+                    "executionUrl"
                 ],
                 "definitions": {
                     "formalParameter": {

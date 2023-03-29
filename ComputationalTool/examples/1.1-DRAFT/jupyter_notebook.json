@@ -1,28 +1,88 @@
 {
-  "@context": "http://schema.org",
-  "@type": "SoftwareApplication",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@type": "CreativeWork",
-    "@id": "https://bioschemas.org/profiles/ComputationalTool/1.1-DRAFT/"
-  },
-  "name": "Conda environment with environment.yml",
-  "@id": "https://github.com/alex-ip/conda",
-  "url": "https://github.com/alex-ip/conda",
-  "codeRepository": "https://github.com/alex-ip/conda",
-  "softwareVersion": "master",
-  "executionURL": [
-    "https://binderhub.atap-binder.cloud.edu.au",
-    "https://mybinder.org"
-  ],
-  "description": "A Binder-compatible repo with an environment.yml file. Forked from https://github.com/binder-examples/conda",
-  "citation": null,
-  "license": "https://spdx.org/licenses/CC-BY-SA-4.0.html",
-  "applicationCategory": "Computational science tool",
-  "applicationSubCategory": "Informatics",
-  "operatingSystem": [
-    "Linux",
-    "Windows",
-    "Mac"
-  ],
-  "programmingLanguage": "Python"
+  "@context": "https://w3id.org/ro/crate/1.1/context",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      },
+      "about": {
+        "@id": "./"
+      },
+      "name": "Conda environment with environment.yml",
+      "@id": "https://github.com/alex-ip/conda",
+      "url": "https://github.com/alex-ip/conda",
+      "codeRepository": "https://github.com/alex-ip/conda",
+      "softwareVersion": "master",
+      "executionURL": [
+        "https://binderhub.atap-binder.cloud.edu.au",
+        "https://mybinder.org"
+      ],
+      "isAccessibleForFree": true,
+      "description": "A Binder-compatible repo with an environment.yml file. Forked from https://github.com/binder-examples/conda",
+      "citation": null,
+      "license": "LICENSE",
+      "applicationCategory": "Computational science tool",
+      "applicationSubCategory": "Informatics",
+      "operatingSystem": [
+        "Linux",
+        "Windows",
+        "Mac"
+      ],
+      "programmingLanguage": "Python",
+      "softwareHelp": "README.md"
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset"
+      ],
+      "hasPart": [
+        {
+          "@id": "index.ipynb"
+        },
+        {
+          "@id": "environment.yml"
+        },
+        {
+          "@id": "README.md"
+        },
+        {
+          "@id": "LICENSE"
+        }
+      ]
+    },
+    {
+      "@id": "index.ipynb",
+      "@type": "File",
+      "name": "Demonstration Jupyter notebook",
+      "contentSize": "23314",
+      "description": "Demonstration Jupyter notebook",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@id": "environment.yml",
+      "@type": "File",
+      "name": "Binder dependency specification",
+      "contentSize": "202",
+      "description": "Binder dependency specification YAML",
+      "encodingFormat": "application/x-yaml"
+    },
+    {
+      "@id": "README.md",
+      "@type": "File",
+      "name": "ReadMe file",
+      "contentSize": "1133",
+      "description": "ReadMe markdown file",
+      "encodingFormat": "text/markdown"
+    },
+    {
+      "@id": "LICENSE",
+      "@type": "File",
+      "name": "BSD 3-Clause License terms",
+      "contentSize": "1543",
+      "description": "BSD 3-Clause License terms text file",
+      "encodingFormat": "text"
+    }
+  ]
 }
