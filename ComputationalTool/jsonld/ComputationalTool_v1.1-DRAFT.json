@@ -552,6 +552,23 @@
                         ],
                         "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.",
                         "owl:cardinality": "many"
+                    },
+                    "executionUrl": {
+                        "description": "A link to the page for executing the ComputationalTool.",
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uri"
+                                }
+                            }
+                        ],
+                        "owl:cardinality": "many"
                     }
                 },
                 "required": [
