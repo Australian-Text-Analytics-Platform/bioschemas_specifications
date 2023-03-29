@@ -13,6 +13,7 @@
       "@id": "https://github.com/alex-ip/conda",
       "url": "https://github.com/alex-ip/conda",
       "codeRepository": "https://github.com/alex-ip/conda",
+      "isBasedOn": "https://github.com/binder-examples/conda",
       "softwareVersion": "master",
       "executionURL": [
         "https://binderhub.atap-binder.cloud.edu.au",
@@ -21,7 +22,9 @@
       "isAccessibleForFree": true,
       "description": "A Binder-compatible repo with an environment.yml file. Forked from https://github.com/binder-examples/conda",
       "citation": null,
-      "license": "LICENSE",
+      "license": {
+        "@id": "LICENSE"
+      },
       "applicationCategory": "Computational science tool",
       "applicationSubCategory": "Informatics",
       "operatingSystem": [
@@ -30,7 +33,9 @@
         "Mac"
       ],
       "programmingLanguage": "Python",
-      "softwareHelp": "README.md"
+      "softwareHelp": {
+        "@id": "README.md"
+      }
     },
     {
       "@id": "./",
