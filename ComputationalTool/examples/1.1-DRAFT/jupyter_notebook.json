@@ -35,6 +35,9 @@
       "programmingLanguage": "Python",
       "softwareHelp": {
         "@id": "README.md"
+      },
+      "softwareRequirements": {
+        "@id": "environment.yml"
       }
     },
     {
@@ -68,9 +71,9 @@
     {
       "@id": "environment.yml",
       "@type": "File",
-      "name": "Binder dependency specification",
+      "name": "Software dependency specifications for Binder",
       "contentSize": "202",
-      "description": "Binder dependency specification YAML",
+      "description": "Software dependency specifications for Binder as YAML",
       "encodingFormat": "application/x-yaml"
     },
     {

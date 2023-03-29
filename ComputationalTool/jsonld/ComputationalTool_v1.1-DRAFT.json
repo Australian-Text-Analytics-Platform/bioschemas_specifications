@@ -569,6 +569,23 @@
                             }
                         ],
                         "owl:cardinality": "many"
+                    },
+                    "softwareRequirements": {
+                        "description": "Component dependency requirements for application. ",
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uri"
+                                }
+                            }
+                        ],
+                        "owl:cardinality": "many"
                     }
                 },
                 "required": [
@@ -607,7 +624,8 @@
                     "softwareAddOn",
                     "softwareHelp",
                     "thumbnailUrl",
-                    "executionUrl"
+                    "executionUrl",
+                    "softwareRequirements"
                 ],
                 "definitions": {
                     "formalParameter": {
