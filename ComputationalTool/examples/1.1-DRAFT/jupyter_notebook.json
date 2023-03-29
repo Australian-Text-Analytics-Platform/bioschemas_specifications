@@ -1,0 +1,28 @@
+{
+  "@context": "http://schema.org",
+  "@type": "SoftwareApplication",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@type": "CreativeWork",
+    "@id": "https://bioschemas.org/profiles/ComputationalTool/1.1-DRAFT/"
+  },
+  "name": "Conda environment with environment.yml",
+  "@id": "https://github.com/alex-ip/conda",
+  "url": "https://github.com/alex-ip/conda",
+  "codeRepository": "https://github.com/alex-ip/conda",
+  "softwareVersion": "master",
+  "executionURL": [
+    "https://binderhub.atap-binder.cloud.edu.au",
+    "https://mybinder.org"
+  ],
+  "description": "A Binder-compatible repo with an environment.yml file. Forked from https://github.com/binder-examples/conda",
+  "citation": null,
+  "license": "https://spdx.org/licenses/CC-BY-SA-4.0.html",
+  "applicationCategory": "Computational science tool",
+  "applicationSubCategory": "Informatics",
+  "operatingSystem": [
+    "Linux",
+    "Windows",
+    "Mac"
+  ],
+  "programmingLanguage": "Python"
+}
