@@ -2,6 +2,7 @@
   "@context": "https://w3id.org/ro/crate/1.1/context",
   "@graph": [
     {
+      "@id": "ro-crate-metadata.json",
       "@type": "SoftwareApplication",
       "conformsTo": {
         "@id": "https://w3id.org/ro/crate/1.1"
@@ -10,7 +11,6 @@
         "@id": "./"
       },
       "name": "Conda environment with environment.yml",
-      "@id": "https://github.com/alex-ip/conda",
       "url": "https://github.com/alex-ip/conda",
       "codeRepository": "https://github.com/alex-ip/conda",
       "isBasedOn": "https://github.com/binder-examples/conda",
@@ -32,7 +32,6 @@
         "Windows",
         "Mac"
       ],
-      "programmingLanguage": "Python",
       "softwareHelp": {
         "@id": "README.md"
       },
@@ -45,6 +44,7 @@
       "@type": [
         "Dataset"
       ],
+      "direct_property_entity": "2023-01-01T00:00:00.000000",
       "hasPart": [
         {
           "@id": "index.ipynb"
@@ -62,18 +62,24 @@
     },
     {
       "@id": "index.ipynb",
-      "@type": "File",
+      "@type": [
+        "File",
+        "SoftwareSourceCode"
+      ],
       "name": "Demonstration Jupyter notebook",
       "contentSize": "23314",
       "description": "Demonstration Jupyter notebook",
-      "encodingFormat": "application/json"
+      "encodingFormat": "application/json",
+      "programmingLanguage": {
+        "@id": "https://nbformat.readthedocs.io/en/latest/index.html"
+      }
     },
     {
       "@id": "environment.yml",
       "@type": "File",
-      "name": "Software dependency specifications for Binder",
+      "name": "Conda software dependency specifications for Binder",
       "contentSize": "202",
-      "description": "Software dependency specifications for Binder as YAML",
+      "description": "Conda software dependency specifications for Binder as YAML",
       "encodingFormat": "application/x-yaml"
     },
     {
@@ -91,6 +97,14 @@
       "contentSize": "1543",
       "description": "BSD 3-Clause License terms text file",
       "encodingFormat": "text"
+    },
+    {
+      "@id": "https://nbformat.readthedocs.io/en/latest/index.html",
+      "@type": [
+        "ComputerLanguage",
+        "SoftwareApplication"
+      ],
+      "name": "Jupyter Notebook Python"
     }
   ]
 }
