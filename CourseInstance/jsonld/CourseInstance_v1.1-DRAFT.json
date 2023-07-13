@@ -3,86 +3,54 @@
     "schema": "http://schema.org/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "tempos": "https://discovery.biothings.io/view/tempos/",
+    "bioschemasdrafts": "https://discovery.biothings.io/view/bioschemasdrafts/",
     "bioschemas": "https://discovery.biothings.io/view/bioschemas/"
   },
   "@graph": [
     {
-      "@id": "tempos:CourseInstance",
+      "@id": "bioschemasdrafts:CourseInstance",
       "@type": "rdfs:Class",
-      "rdfs:comment": "Vr-test. Description can be a short paragraph about how this class is more specific from the class you are extending, need to extend this hierarchy, or use case.",
+      "rdfs:comment": "This specification can be used in tandem with a Course. A course is used to describe the broad, common aspects of a recurring training event - whereas a course instance is about the specific times and location of when that course is held. Version 1.1-DRAFT <h4>Summary of Changes</h4>Changes since version 1.0-RELEASE<ul><li>Added sameAs</li><li>modified by Nick and Ginger</li></ul> ",
       "rdfs:label": "CourseInstance",
       "rdfs:subClassOf": {
-        "@id": "bioschemasdrafts:CourseInstance"
+        "@id": "schema:CourseInstance"
       },
       "$validation": {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
-          "conformsTo": {
-            "description": "Used to state the Bioschemas profile that the markup relates to. The versioned URL of the profile must be used. Note that we use a CURIE in the table here but the full URL for Dublin Core terms must be used in the markup (http://purl.org/dc/terms/conformsTo), see example.",
-            "@type": "CreativeWork",
-            "type": "object",
-            "properties": {
-              "identifier": {
-                "oneOf": [
-                  {
-                    "enum": [
-                      "https://github.com/BioSchemas/specifications/blob/master/CourseInstance/jsonld/CourseInstance_v0.8-DRAFT-2020_10_06.json"
-                    ]
-                  },
-                  {
-                    "format": "uri",
-                    "type": "string"
-                  }
-                ],
-                "description": "The url of the version bioschemas profile that was used. For jsonschema, set @id to the identifier"
-              }
-            },
-            "required": [
-              "identifier"
-            ]
-          },
           "courseMode": {
-            "description": "The medium or means of delivery of the course instance or the mode of study, either as a text label (e.g. \"online\", \"onsite\" or \"blended\"; \"synchronous\" or \"asynchronous\"; \"full-time\" or \"part-time\") or as a URL reference to a term from a controlled vocabulary (e.g. \nhttps://ceds.ed.gov/element/001311#Asynchronous ).\n\nBioschemas: Any additional description here",
+            "description": "The medium or means of delivery of the course instance or the mode of study, either as a text label (e.g. \"online\", \"onsite\" or \"blended\"; \"synchronous\" or \"asynchronous\"; \"full-time\" or \"part-time\") or as a URL reference to a term from a controlled vocabulary (e.g. https://ceds.ed.gov/element/001311#Asynchronous ).",
             "anyOf": [
               {
                 "type": "string"
               },
               {
-                "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "type": "array"
               },
               {
                 "format": "uri",
                 "type": "string"
               },
               {
-                "type": "array",
                 "items": {
                   "format": "uri",
                   "type": "string"
-                }
+                },
+                "type": "array"
               }
             ],
-            "owl:cardinality": "one"
-          },
-          "courseWorkload": {
-            "description": "The amount of work expected of students taking the course, often provided as a figure per week or per month, and may be broken down by type. For example, \"2 hours of lectures, 1 hour of lab work and 3 hours of independent study per week\".",
-            "owl:cardinality": "one"
+            "owl:cardinality": "many"
           },
           "instructor": {
             "description": "A person assigned to instruct or provide instructional assistance for the [[CourseInstance]].",
             "oneOf": [
               {
                 "@type": "Person",
-                "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
                   "mainEntityOfPage": {
                     "anyOf": [
                       {
@@ -90,15 +58,14 @@
                         "type": "string"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "format": "uri",
                           "type": "string"
-                        }
+                        },
+                        "type": "array"
                       },
                       {
                         "@type": "CreativeWork",
-                        "type": "object",
                         "properties": {
                           "identifier": {
                             "type": "string"
@@ -111,13 +78,12 @@
                             "type": "string"
                           }
                         },
-                        "required": []
+                        "required": [],
+                        "type": "object"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -130,10 +96,15 @@
                               "type": "string"
                             }
                           },
-                          "required": []
-                        }
+                          "required": [],
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     ]
+                  },
+                  "name": {
+                    "type": "string"
                   },
                   "url": {
                     "format": "uri",
@@ -142,17 +113,13 @@
                 },
                 "required": [
                   "name"
-                ]
+                ],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "Person",
-                  "type": "object",
                   "properties": {
-                    "name": {
-                      "type": "string"
-                    },
                     "mainEntityOfPage": {
                       "anyOf": [
                         {
@@ -160,15 +127,14 @@
                           "type": "string"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "format": "uri",
                             "type": "string"
-                          }
+                          },
+                          "type": "array"
                         },
                         {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -181,13 +147,12 @@
                               "type": "string"
                             }
                           },
-                          "required": []
+                          "required": [],
+                          "type": "object"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "@type": "CreativeWork",
-                            "type": "object",
                             "properties": {
                               "identifier": {
                                 "type": "string"
@@ -200,10 +165,15 @@
                                 "type": "string"
                               }
                             },
-                            "required": []
-                          }
+                            "required": [],
+                            "type": "object"
+                          },
+                          "type": "array"
                         }
                       ]
+                    },
+                    "name": {
+                      "type": "string"
                     },
                     "url": {
                       "format": "uri",
@@ -212,8 +182,10 @@
                   },
                   "required": [
                     "name"
-                  ]
-                }
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -223,52 +195,48 @@
             "anyOf": [
               {
                 "@type": "Organization",
-                "type": "object",
                 "properties": {
+                  "description": {
+                    "type": "string"
+                  },
                   "legalName": {
                     "type": "string"
                   },
                   "name": {
                     "type": "string"
                   },
-                  "description": {
-                    "type": "string"
-                  },
                   "sameAs": {
                     "format": "uri",
                     "type": "string"
                   }
-                }
+                },
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "Organization",
-                  "type": "object",
                   "properties": {
+                    "description": {
+                      "type": "string"
+                    },
                     "legalName": {
                       "type": "string"
                     },
                     "name": {
                       "type": "string"
                     },
-                    "description": {
-                      "type": "string"
-                    },
                     "sameAs": {
                       "format": "uri",
                       "type": "string"
                     }
-                  }
-                }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
               },
               {
                 "@type": "Person",
-                "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
                   "mainEntityOfPage": {
                     "anyOf": [
                       {
@@ -276,15 +244,14 @@
                         "type": "string"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "format": "uri",
                           "type": "string"
-                        }
+                        },
+                        "type": "array"
                       },
                       {
                         "@type": "CreativeWork",
-                        "type": "object",
                         "properties": {
                           "identifier": {
                             "type": "string"
@@ -297,13 +264,12 @@
                             "type": "string"
                           }
                         },
-                        "required": []
+                        "required": [],
+                        "type": "object"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -316,10 +282,15 @@
                               "type": "string"
                             }
                           },
-                          "required": []
-                        }
+                          "required": [],
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     ]
+                  },
+                  "name": {
+                    "type": "string"
                   },
                   "url": {
                     "format": "uri",
@@ -328,17 +299,13 @@
                 },
                 "required": [
                   "name"
-                ]
+                ],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "Person",
-                  "type": "object",
                   "properties": {
-                    "name": {
-                      "type": "string"
-                    },
                     "mainEntityOfPage": {
                       "anyOf": [
                         {
@@ -346,15 +313,14 @@
                           "type": "string"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "format": "uri",
                             "type": "string"
-                          }
+                          },
+                          "type": "array"
                         },
                         {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -367,13 +333,12 @@
                               "type": "string"
                             }
                           },
-                          "required": []
+                          "required": [],
+                          "type": "object"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "@type": "CreativeWork",
-                            "type": "object",
                             "properties": {
                               "identifier": {
                                 "type": "string"
@@ -386,10 +351,15 @@
                                 "type": "string"
                               }
                             },
-                            "required": []
-                          }
+                            "required": [],
+                            "type": "object"
+                          },
+                          "type": "array"
                         }
                       ]
+                    },
+                    "name": {
+                      "type": "string"
                     },
                     "url": {
                       "format": "uri",
@@ -398,8 +368,10 @@
                   },
                   "required": [
                     "name"
-                  ]
-                }
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -407,14 +379,14 @@
           "duration": {
             "description": "The duration of the item (movie, audio recording, event, etc.) in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601).",
             "@type": "schema:Duration",
-            "type": "object",
+            "owl:cardinality": "one",
             "properties": {
               "name": {
                 "type": "string"
               }
             },
             "required": [],
-            "owl:cardinality": "one"
+            "type": "object"
           },
           "endDate": {
             "description": "The end date and time of the item (in [ISO 8601 date format](http://en.wikipedia.org/wiki/ISO_8601)).",
@@ -425,13 +397,13 @@
               },
               {
                 "@type": "schema:DateTime",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               }
             ],
             "owl:cardinality": "one"
@@ -439,66 +411,62 @@
           "eventStatus": {
             "description": "An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.",
             "@type": "schema:EventStatusType",
-            "type": "object",
+            "owl:cardinality": "one",
             "properties": {
               "name": {
                 "type": "string"
               }
             },
             "required": [],
-            "owl:cardinality": "one"
+            "type": "object"
           },
           "funder": {
             "description": "A person or organization that supports (sponsors) something through some kind of financial contribution.",
             "anyOf": [
               {
                 "@type": "Organization",
-                "type": "object",
                 "properties": {
+                  "description": {
+                    "type": "string"
+                  },
                   "legalName": {
                     "type": "string"
                   },
                   "name": {
                     "type": "string"
                   },
-                  "description": {
-                    "type": "string"
-                  },
                   "sameAs": {
                     "format": "uri",
                     "type": "string"
                   }
-                }
+                },
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "Organization",
-                  "type": "object",
                   "properties": {
+                    "description": {
+                      "type": "string"
+                    },
                     "legalName": {
                       "type": "string"
                     },
                     "name": {
                       "type": "string"
                     },
-                    "description": {
-                      "type": "string"
-                    },
                     "sameAs": {
                       "format": "uri",
                       "type": "string"
                     }
-                  }
-                }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
               },
               {
                 "@type": "Person",
-                "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
                   "mainEntityOfPage": {
                     "anyOf": [
                       {
@@ -506,15 +474,14 @@
                         "type": "string"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "format": "uri",
                           "type": "string"
-                        }
+                        },
+                        "type": "array"
                       },
                       {
                         "@type": "CreativeWork",
-                        "type": "object",
                         "properties": {
                           "identifier": {
                             "type": "string"
@@ -527,13 +494,12 @@
                             "type": "string"
                           }
                         },
-                        "required": []
+                        "required": [],
+                        "type": "object"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -546,10 +512,15 @@
                               "type": "string"
                             }
                           },
-                          "required": []
-                        }
+                          "required": [],
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     ]
+                  },
+                  "name": {
+                    "type": "string"
                   },
                   "url": {
                     "format": "uri",
@@ -558,17 +529,13 @@
                 },
                 "required": [
                   "name"
-                ]
+                ],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "Person",
-                  "type": "object",
                   "properties": {
-                    "name": {
-                      "type": "string"
-                    },
                     "mainEntityOfPage": {
                       "anyOf": [
                         {
@@ -576,15 +543,14 @@
                           "type": "string"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "format": "uri",
                             "type": "string"
-                          }
+                          },
+                          "type": "array"
                         },
                         {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -597,13 +563,12 @@
                               "type": "string"
                             }
                           },
-                          "required": []
+                          "required": [],
+                          "type": "object"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "@type": "CreativeWork",
-                            "type": "object",
                             "properties": {
                               "identifier": {
                                 "type": "string"
@@ -616,10 +581,15 @@
                                 "type": "string"
                               }
                             },
-                            "required": []
-                          }
+                            "required": [],
+                            "type": "object"
+                          },
+                          "type": "array"
                         }
                       ]
+                    },
+                    "name": {
+                      "type": "string"
                     },
                     "url": {
                       "format": "uri",
@@ -628,8 +598,10 @@
                   },
                   "required": [
                     "name"
-                  ]
-                }
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -639,30 +611,26 @@
             "oneOf": [
               {
                 "@type": "schema:Language",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               },
               {
                 "type": "string"
               }
             ],
-            "owl:cardinality": "many"
+            "owl:cardinality": "one"
           },
           "location": {
             "description": "The location of, for example, where an event is happening, where an organization is located, or where an action takes place.",
             "oneOf": [
               {
                 "@type": "Place",
-                "type": "object",
                 "properties": {
-                  "identifier": {
-                    "type": "string"
-                  },
                   "address": {
                     "oneOf": [
                       {
@@ -670,15 +638,8 @@
                       },
                       {
                         "@type": "PostalAddress",
-                        "type": "object",
                         "properties": {
                           "addressCountry": {
-                            "type": "string"
-                          },
-                          "streetAddress": {
-                            "type": "string"
-                          },
-                          "postalCode": {
                             "type": "string"
                           },
                           "addressLocality": {
@@ -689,10 +650,20 @@
                           },
                           "postOfficeBoxNumber": {
                             "type": "string"
+                          },
+                          "postalCode": {
+                            "type": "string"
+                          },
+                          "streetAddress": {
+                            "type": "string"
                           }
-                        }
+                        },
+                        "type": "object"
                       }
                     ]
+                  },
+                  "identifier": {
+                    "type": "string"
                   },
                   "name": {
                     "type": "string"
@@ -701,19 +672,13 @@
                     "format": "uri",
                     "type": "string"
                   }
-                }
+                },
+                "type": "object"
               },
               {
                 "@type": "PostalAddress",
-                "type": "object",
                 "properties": {
                   "addressCountry": {
-                    "type": "string"
-                  },
-                  "streetAddress": {
-                    "type": "string"
-                  },
-                  "postalCode": {
                     "type": "string"
                   },
                   "addressLocality": {
@@ -724,78 +689,85 @@
                   },
                   "postOfficeBoxNumber": {
                     "type": "string"
+                  },
+                  "postalCode": {
+                    "type": "string"
+                  },
+                  "streetAddress": {
+                    "type": "string"
                   }
-                }
+                },
+                "type": "object"
               },
               {
                 "type": "string"
               },
               {
                 "@type": "schema:VirtualLocation",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               }
             ],
-            "owl:cardinality": "many"
+            "owl:cardinality": "one"
           },
           "maximumAttendeeCapacity": {
             "description": "The total number of individuals that may attend an event or venue.",
-            "type": "integer",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "type": "integer"
           },
           "offers": {
             "description": "An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event. Use [[businessFunction]] to indicate the kind of transaction offered, i.e. sell, lease, etc. This property can also be used to describe a [[Demand]]. While this property is listed as expected on a number of common types, it can be used in others. In that case, using a second type, such as Product or a subtype of Product, can clarify the nature of the offer.\n      ",
             "anyOf": [
               {
                 "@type": "schema:Demand",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "schema:Demand",
-                  "type": "object",
                   "properties": {
                     "name": {
                       "type": "string"
                     }
                   },
-                  "required": []
-                }
+                  "required": [],
+                  "type": "object"
+                },
+                "type": "array"
               },
               {
                 "@type": "schema:Offer",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "schema:Offer",
-                  "type": "object",
                   "properties": {
                     "name": {
                       "type": "string"
                     }
                   },
-                  "required": []
-                }
+                  "required": [],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -805,52 +777,48 @@
             "anyOf": [
               {
                 "@type": "Organization",
-                "type": "object",
                 "properties": {
+                  "description": {
+                    "type": "string"
+                  },
                   "legalName": {
                     "type": "string"
                   },
                   "name": {
                     "type": "string"
                   },
-                  "description": {
-                    "type": "string"
-                  },
                   "sameAs": {
                     "format": "uri",
                     "type": "string"
                   }
-                }
+                },
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "Organization",
-                  "type": "object",
                   "properties": {
+                    "description": {
+                      "type": "string"
+                    },
                     "legalName": {
                       "type": "string"
                     },
                     "name": {
                       "type": "string"
                     },
-                    "description": {
-                      "type": "string"
-                    },
                     "sameAs": {
                       "format": "uri",
                       "type": "string"
                     }
-                  }
-                }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
               },
               {
                 "@type": "Person",
-                "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
                   "mainEntityOfPage": {
                     "anyOf": [
                       {
@@ -858,15 +826,14 @@
                         "type": "string"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "format": "uri",
                           "type": "string"
-                        }
+                        },
+                        "type": "array"
                       },
                       {
                         "@type": "CreativeWork",
-                        "type": "object",
                         "properties": {
                           "identifier": {
                             "type": "string"
@@ -879,13 +846,12 @@
                             "type": "string"
                           }
                         },
-                        "required": []
+                        "required": [],
+                        "type": "object"
                       },
                       {
-                        "type": "array",
                         "items": {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -898,10 +864,15 @@
                               "type": "string"
                             }
                           },
-                          "required": []
-                        }
+                          "required": [],
+                          "type": "object"
+                        },
+                        "type": "array"
                       }
                     ]
+                  },
+                  "name": {
+                    "type": "string"
                   },
                   "url": {
                     "format": "uri",
@@ -910,17 +881,13 @@
                 },
                 "required": [
                   "name"
-                ]
+                ],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "Person",
-                  "type": "object",
                   "properties": {
-                    "name": {
-                      "type": "string"
-                    },
                     "mainEntityOfPage": {
                       "anyOf": [
                         {
@@ -928,15 +895,14 @@
                           "type": "string"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "format": "uri",
                             "type": "string"
-                          }
+                          },
+                          "type": "array"
                         },
                         {
                           "@type": "CreativeWork",
-                          "type": "object",
                           "properties": {
                             "identifier": {
                               "type": "string"
@@ -949,13 +915,12 @@
                               "type": "string"
                             }
                           },
-                          "required": []
+                          "required": [],
+                          "type": "object"
                         },
                         {
-                          "type": "array",
                           "items": {
                             "@type": "CreativeWork",
-                            "type": "object",
                             "properties": {
                               "identifier": {
                                 "type": "string"
@@ -968,10 +933,15 @@
                                 "type": "string"
                               }
                             },
-                            "required": []
-                          }
+                            "required": [],
+                            "type": "object"
+                          },
+                          "type": "array"
                         }
                       ]
+                    },
+                    "name": {
+                      "type": "string"
                     },
                     "url": {
                       "format": "uri",
@@ -980,8 +950,10 @@
                   },
                   "required": [
                     "name"
-                  ]
-                }
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -995,13 +967,13 @@
               },
               {
                 "@type": "schema:DateTime",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               }
             ],
             "owl:cardinality": "one"
@@ -1011,26 +983,26 @@
             "oneOf": [
               {
                 "@type": "bioschemas:Event",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "bioschemas:Event",
-                  "type": "object",
                   "properties": {
                     "name": {
                       "type": "string"
                     }
                   },
-                  "required": []
-                }
+                  "required": [],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -1040,26 +1012,26 @@
             "oneOf": [
               {
                 "@type": "bioschemas:Event",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "bioschemas:Event",
-                  "type": "object",
                   "properties": {
                     "name": {
                       "type": "string"
                     }
                   },
-                  "required": []
-                }
+                  "required": [],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -1069,7 +1041,6 @@
             "oneOf": [
               {
                 "@type": "CreativeWork",
-                "type": "object",
                 "properties": {
                   "identifier": {
                     "type": "string"
@@ -1082,13 +1053,12 @@
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               },
               {
-                "type": "array",
                 "items": {
                   "@type": "CreativeWork",
-                  "type": "object",
                   "properties": {
                     "identifier": {
                       "type": "string"
@@ -1101,8 +1071,10 @@
                       "type": "string"
                     }
                   },
-                  "required": []
-                }
+                  "required": [],
+                  "type": "object"
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
@@ -1114,25 +1086,24 @@
                 "type": "string"
               },
               {
-                "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "type": "array"
               }
             ],
             "owl:cardinality": "many"
           },
           "description": {
             "description": "A description of the item.",
-            "type": "string",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "type": "string"
           },
           "image": {
             "description": "An image of the item. This can be a [[URL]] or a fully described [[ImageObject]].",
             "oneOf": [
               {
                 "@type": "ImageObject",
-                "type": "object",
                 "properties": {
                   "name": {
                     "type": "string"
@@ -1142,29 +1113,46 @@
                     "type": "string"
                   }
                 },
-                "required": []
+                "required": [],
+                "type": "object"
               },
               {
                 "format": "uri",
                 "type": "string"
               }
             ],
-            "owl:cardinality": "many"
+            "owl:cardinality": "one"
           },
           "name": {
             "description": "The name of the item.",
-            "type": "string",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "type": "string"
+          },
+          "sameAs": {
+            "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.",
+            "owl:cardinality": "many",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri"
+                    }
+                }
+            ]          
           },
           "url": {
             "description": "URL of the item.",
             "format": "uri",
-            "type": "string",
-            "owl:cardinality": "many"
+            "owl:cardinality": "one",
+            "type": "string"
           }
         },
         "required": [
-          "conformsTo",
           "courseMode",
           "location"
         ],
@@ -1174,10 +1162,10 @@
           "inLanguage",
           "offers",
           "startDate",
+          "sameAs",
           "url"
         ],
         "optional": [
-          "courseWorkload",
           "contributor",
           "duration",
           "eventStatus",

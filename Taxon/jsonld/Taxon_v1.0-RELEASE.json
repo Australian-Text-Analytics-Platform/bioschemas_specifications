@@ -4,23 +4,25 @@
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "bioschemastypes": "https://discovery.biothings.io/view/bioschemastypes/",
-        "bioschemastypesdrafts": "https://discovery.biothings.io/view/bioschemastypesdrafts/",
-        "bioschemasdrafts": "https://discovery.biothings.io/view/bioschemasdrafts/",
-        "dwc": "http://rs.tdwg.org/dwc/terms/",
+        "bioschemas": "https://discovery.biothings.io/view/bioschemas/",
         "dwc": "http://rs.tdwg.org/dwc/terms/",
         "owl": "http://www.w3.org/2002/07/owl/"
     },
     "@graph": [
         {
-            "@id": "bioschemasdrafts:Taxon",
+            "@id": "bioschemas:Taxon",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Bioschemas profile for describing a biological taxon This profile aims to denote a taxon by common properties such as its scientific name, taxonomic rank and vernacular names. It is also a means to link to existing taxonomic registers where each taxon has a URI. Version 0.8-DRAFT.<br/><h3>Summary of Changes</h3><br>Changes since 0.7-DRAFT:<ul><li>Change sameAs from optional to recommended.</li></ul>",
+            "rdfs:comment": "Bioschemas profile for describing a biological taxon This profile aims to denote a taxon by common properties such as its scientific name, taxonomic rank and vernacular names. It is also a means to link to existing taxonomic registers where each taxon has a URI. Version 1.0-RELEASE.<br/><h3>Summary of Changes</h3><br>Changes since 0.8-DRAFT:<ul><li>None. Version 0.8-DRAFT was the draft approved for release.</li></ul>",
             "schema:schemaVersion": [
-                "https://bioschemas.org/profiles/Taxon/0.8-DRAFT"
+                "https://bioschemas.org/profiles/Taxon/1.0-RELEASE",
+                "https://bioschemas.org/types/Taxon/1.0-RELEASE",
+                "https://bioschemas.org/profiles/TaxonName/1.0-RELEASE",
+                "https://bioschemas.org/types/TaxonName/1.0-RELEASE",
+                "https://github.com/schemaorg/schemaorg/tree/main/data/releases/15.0/"
             ],
             "rdfs:label": "Taxon",
             "rdfs:subClassOf": {
-                "@id": "schema:Taxon"
+                "@id": "bioschemastypes:Taxon"
             },
             "$validation": {
                 "$schema": "http://json-schema.org/draft-07/schema#",
@@ -300,7 +302,7 @@
                 ],
                 "definitions": {
                     "taxonname": {
-                        "@type": "bioschemastypesdrafts:TaxonName",
+                        "@type": "bioschemastypes:TaxonName",
                         "type": "object",
                         "properties": {
                             "name": {
@@ -310,7 +312,7 @@
                         "required": []
                     },
                     "taxon": {
-                        "@type": "schema:Taxon",
+                        "@type": "bioschemastypes:Taxon",
                         "type": "object",
                         "properties": {
                             "name": {
@@ -480,7 +482,7 @@
             "@type": "rdf:Property",
             "rdfs:label": "vernacularName",
             "schema:domainIncludes": {
-                "@id": "bioschemasdrafts:Taxon"
+                "@id": "bioschemas:Taxon"
             },
             "schema:rangeIncludes": [
                 {
@@ -489,16 +491,16 @@
             ]
         },
         {
-            "@id": "bioschemasdrafts:scientificName",
+            "@id": "bioschemas:scientificName",
             "rdfs:comment": "A TaxonName representing the currently valid (zoological) or accepted (botanical) name for that taxon.",
             "@type": "rdf:Property",
             "rdfs:label": "scientificName",
             "schema:domainIncludes": {
-                "@id": "bioschemasdrafts:Taxon"
+                "@id": "bioschemas:Taxon"
             },
             "schema:rangeIncludes": [
                 {
-                    "@id": "bioschemastypesdrafts:TaxonName"
+                    "@id": "bioschemastypes:TaxonName"
                 },
                 {
                     "@id": "schema:Text"
@@ -509,16 +511,16 @@
             ]
         },
         {
-            "@id": "bioschemasdrafts:alternateScientificName",
+            "@id": "bioschemas:alternateScientificName",
             "rdfs:comment": "A TaxonName representing a scientific name, with authorship and date information if known, of a synonym of the currently valid (zoological) or accepted (botanical) name.",
             "@type": "rdf:Property",
             "rdfs:label": "alternateScientificName",
             "schema:domainIncludes": {
-                "@id": "bioschemasdrafts:Taxon"
+                "@id": "bioschemas:Taxon"
             },
             "schema:rangeIncludes": [
                 {
-                    "@id": "bioschemastypesdrafts:TaxonName"
+                    "@id": "bioschemastypes:TaxonName"
                 },
                 {
                     "@id": "schema:Text"
@@ -529,12 +531,12 @@
             ]
         },
         {
-            "@id": "bioschemasdrafts:isBasedOn",
+            "@id": "bioschemas:isBasedOn",
             "rdfs:comment": "A resource from which this work is derived or from which it is a modification or adaption. Supersedes, isBasedOnUrl. \n A CreativeWork, such as a scholarly article, asserting the status of the accepted/valid name and synonyms, retained for the taxon circumscription.",
             "@type": "rdf:Property",
             "rdfs:label": "isBasedOn",
             "schema:domainIncludes": {
-                "@id": "bioschemasdrafts:Taxon"
+                "@id": "bioschemas:Taxon"
             },
             "schema:rangeIncludes": [
                 {
